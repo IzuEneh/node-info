@@ -1,0 +1,22 @@
+{
+  "name": "info",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IzuEneh/node-info.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IzuEneh/node-info/issues"
+  },
+  "homepage": "https://github.com/IzuEneh/node-info#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

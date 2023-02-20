@@ -1,29 +1,30 @@
+const express = require("express");
+const path = require("path");
 let http = require("http");
 let fs = require("fs");
 
-const getFile = (name, res) => {
-	fs.readFile(name, (err, data) => {
-		res.writeHead(200, { "Content-Type": "text/html" });
-		res.write(data);
-		return res.end();
-	});
+const app = express();
+const port = 8080;
+const options = {
+	root: path.join(__dirname),
 };
-http
-	.createServer((req, res) => {
-		const url = req.url;
-		switch (url) {
-			case "/": {
-				return getFile("index.html", res);
-			}
-			case "/about": {
-				return getFile("about.html", res);
-			}
-			case "/contact-me": {
-				return getFile("contact-me.html", res);
-			}
-			default: {
-				return getFile("404.html", res);
-			}
-		}
-	})
-	.listen(8080);
+
+app.get("/", function (req, res) {
+	res.sendFile("index.html", options);
+});
+
+app.get("/about", function (req, res) {
+	res.sendFile("about.html", options);
+});
+
+app.get("/contact-me", function (req, res) {
+	res.sendFile("./contact-me.html", options);
+});
+
+app.all("*", function (req, res) {
+	res.sendFile("404.html", options);
+});
+
+app.listen(port, function () {
+	console.log(`Example app listening on port ${port}!`);
+});
